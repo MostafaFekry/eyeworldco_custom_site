@@ -1,0 +1,39 @@
+{% extends "templates/basecs.html" %}
+{% block title %}{{ _(title) }}{% if main_page_title %} | {{ main_page_title  }}{% endif %}{% endblock %}
+
+
+{% block content %}
+<section id="mainpage" class="section section-text-light section-background section-center m-0" style='background-image: url({{ (doc.background_image)|abs_url or "/assets/eyeworldco_custom_site/img/bg.jpg" }});background-position: center;background-repeat: no-repeat;'>
+	<div class="container">
+		<div class="row  justify-content-center">
+			<div class="col text-center my-4" style='min-height:700px'>
+				 <div class="">
+					<div class="bounce-loader bounce-loader-title">
+						<h2 class="text-uppercase line-height-5 text-8 mb-1">{{ _(title) }}</h2>
+						<br>
+						<br>
+						<br>
+						<h2 class="text-uppercase text-5 line-height-5 mb-1">{{ _(doc.description) }}</h2>
+						<div class="bounce1"></div>
+						<div class="bounce2"></div>
+						<div class="bounce3"></div>
+						
+						<div class="container text-center my-3 py-5">
+							{% if website_social_media_item %}
+							<ul class="social-icons social-icons social-icons-dark social-icons-opacity-light social-icons-clean">
+							{%- for social_item in website_social_media_item -%}
+								<li class="{{ social_item.social_class }}"><a href="{{ social_item.social_url }}" target="{{ social_item.social_url_target }}" title="{{ social_item.social_name }}"><i class="{{ social_item.social_icon }}"></i></a></li>
+							{%- endfor %}
+							</ul>
+							{%- endif %}
+							{% if copyright %}
+							<p class="mt-1 mb-0 text-2">&copy; {{ _(copyright) }}</p>
+							{% endif %}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+{% endblock %}

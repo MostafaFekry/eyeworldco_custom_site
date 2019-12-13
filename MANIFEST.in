@@ -1,0 +1,18 @@
+include MANIFEST.in
+include requirements.txt
+include *.json
+include *.md
+include *.py
+include *.txt
+recursive-include eyeworldco_custom_site *.css
+recursive-include eyeworldco_custom_site *.csv
+recursive-include eyeworldco_custom_site *.html
+recursive-include eyeworldco_custom_site *.ico
+recursive-include eyeworldco_custom_site *.js
+recursive-include eyeworldco_custom_site *.json
+recursive-include eyeworldco_custom_site *.md
+recursive-include eyeworldco_custom_site *.png
+recursive-include eyeworldco_custom_site *.py
+recursive-include eyeworldco_custom_site *.svg
+recursive-include eyeworldco_custom_site *.txt
+recursive-exclude eyeworldco_custom_site *.pyc

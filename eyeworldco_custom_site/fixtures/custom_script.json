@@ -1,0 +1,24 @@
+[
+ {
+  "docstatus": 0,
+  "doctype": "Custom Script",
+  "dt": "Sales Order",
+  "modified": "2019-12-13 21:43:14.490359",
+  "name": "Sales Order-Client",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "script": "frappe.ui.form.on('Sales Order', {\r\n    refresh: function(frm) {\r\n        if (frm.doc.docstatus==1) {\r\n\t\t\tif (frm.doc.sales_order_reserved===0) {\r\n\t\t\t   frm.add_custom_button(__('Make Reserve Item'), () => frm.events.make_reserve(frm,'Make Reserve Item'), __('Reserve'));\r\n\t\t\t}\r\n\t\t\tif (frm.doc.sales_order_reserved===1) {\r\n\t\t\t   frm.add_custom_button(__('Make Release Item'), () => frm.events.make_reserve(frm,'Make Release Item'), __('Reserve'));\r\n\t\t\t}\r\n        }\r\n    },\r\n    make_reserve: function(frm,make_action){\r\n\t\tfrappe.call({\r\n\t\t\tmethod: 'eyeworldco_custom_site.utils.make_reserve_action',\r\n\t\t\targs: {\r\n\t\t\t\treference_doctype: frm.doctype,\r\n\t\t\t\treference_name: frm.docname,\r\n\t\t\t\tmake_action: make_action\r\n\t\t\t},\r\n\t\t\t// disable the button until the request is completed\r\n\t\t\tbtn: $('.primary-action'),\r\n\t\t\t// freeze the screen until the request is completed\r\n\t\t\tfreeze: true,\r\n\t\t\tcallback: (r) => {\r\n\t\t\t\tfrm.reload_doc();\r\n\t\t\t}\r\n\t\t});\r\n    }\r\n});\r\ncur_frm.cscript.onload = function(frm) { \r\n    cur_frm.set_query(\"item_code\", \"items\", function() { \r\n        return { \r\n            filters: {\r\n                \"reserved\": 0,\r\n                \"has_variants\":0,\r\n                \"is_sales_item\": 1\r\n            }\r\n        };\r\n    });\r\n};"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Custom Script",
+  "dt": "Quotation",
+  "modified": "2019-12-14 00:32:20.059862",
+  "name": "Quotation-Client",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "script": "cur_frm.cscript.onload = function(frm) { \r\n    cur_frm.set_query(\"item_code\", \"items\", function() { \r\n        return { \r\n            filters: {\r\n                \"reserved\": 0,\r\n                \"has_variants\":0,\r\n                \"is_sales_item\": 1\r\n            }\r\n        };\r\n    });\r\n};"
+ }
+]

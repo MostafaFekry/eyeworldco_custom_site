@@ -1,0 +1,32 @@
+{
+ "autoname": "field:item_group_name",
+ "creation": "2019-12-13 15:47:20.725756",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "item_group_name"
+ ],
+ "fields": [
+  {
+   "fieldname": "item_group_name",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Item Group Name",
+   "options": "Item Group",
+   "reqd": 1,
+   "unique": 1
+  }
+ ],
+ "istable": 1,
+ "modified": "2019-12-13 15:47:20.725756",
+ "modified_by": "Administrator",
+ "module": "Eyeworldco Custom Site",
+ "name": "Reserved Item Group",
+ "owner": "Administrator",
+ "permissions": [],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}
